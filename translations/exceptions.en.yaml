@@ -1,0 +1,3 @@
+HttpException: Data not found
+NotEmptyException: Sorry you can not delete it
+UniqueConstraintViolationException: Data already exists

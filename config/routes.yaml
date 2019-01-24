@@ -1,0 +1,9 @@
+# rest_controller:
+#     resource: ../src/Controller/Api/
+#     type: annotation
+#     prefix: /api
+#     defaults: 
+#       _format: json
+#   #index:
+# #    path: /
+# #    controller: App\Controller\DefaultController::index
