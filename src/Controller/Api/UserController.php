@@ -68,10 +68,10 @@ class UserController extends AbstractController
      *
      * @Route("/{user}", methods="DELETE", name="delete_user")
      *
-     * @param \App\Entity\User         $user
-     * @param \App\Service\UserService $service
+     * @param User $user
+     * @param UserService $service
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
     public function delete(User $user, UserService $service)
     {
