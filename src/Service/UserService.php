@@ -47,11 +47,10 @@ class UserService
     private $user;
 
     /**
-     * Constructor.
-     *
-     * @param \App\Service\ValidatorService        $validator
-     * @param \Doctrine\ORM\EntityManagerInterface $em
-     * @param \App\Repository\UserRepository       $repo
+     * UserService constructor.
+     * @param ValidatorService $validator
+     * @param EntityManagerInterface $em
+     * @param UserRepository $repo
      */
     public function __construct(ValidatorService $validator, EntityManagerInterface $em, UserRepository $repo)
     {
