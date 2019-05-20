@@ -41,14 +41,14 @@ class UserController extends AbstractController
      *
      * @Route(methods="POST", name="add_user")
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \App\Service\UserService                  $service
+     * @param Request $request
+     * @param UserService $service
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function addUser(Request $request, UserService $service)
+    public function store(Request $request, UserService $service)
     {
-        $result = $service->addUser($request);
+        $result = $service->add($request);
 
         if ($result->hasError()) {
             return new JsonResponse(['error' => $result->getError()],
@@ -73,7 +73,7 @@ class UserController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function deleteUser(User $user, UserService $service)
+    public function delete(User $user, UserService $service)
     {
         $result = $service->deleteUser($user);
 
