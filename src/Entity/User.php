@@ -8,6 +8,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -41,6 +42,11 @@ class User
      * )
      */
     private $groups;
+
+    public function __construct()
+    {
+        $this->groups = new ArrayCollection();
+    }
 
     /**
      * Get id.
@@ -79,33 +85,36 @@ class User
     /**
      * Add group.
      *
-     * @param \App\Entit\Group $group
+     * @param Group $group
      *
      * @return $this
      */
     public function addGroup(Group $group)
     {
-        $this->groups[] = $group;
+        $this->groups->add($group);
 
         return $this;
     }
 
     /**
      * Remove group.
-     * 
-     * @param \App\Entity\Group $group
+     *
+     * @param Group $group
+     * @return $this
      */
     public function removeGroup(Group $group)
     {
         $this->groups->removeElement($group);
+
+        return $this;
     }
 
     /**
      * Get groups.
      *
-     * @return ArrayCollection|null
+     * @return ArrayCollection
      */
-    public function getGroups()
+    public function getGroups(): ArrayCollection
     {
         return $this->groups;
     }
