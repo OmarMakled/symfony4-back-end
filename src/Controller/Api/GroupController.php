@@ -30,7 +30,7 @@ class GroupController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getGroups(GroupService $service)
+    public function index(GroupService $service)
     {
         return new JsonResponse(['groups' => $service->getGroups()], Response::HTTP_OK);
     }
