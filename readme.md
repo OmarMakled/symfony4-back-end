@@ -2,10 +2,10 @@
 
 ![internations](https://user-images.githubusercontent.com/3720473/51105484-c3bcd380-17f1-11e9-90b0-5d898d354d04.gif)
 
-
 ## APIS
+
 | type   | url                         | payload        | description            |
-|--------|-----------------------------|----------------|------------------------|
+| ------ | --------------------------- | -------------- | ---------------------- |
 | GET    | /api/users                  |                | get all users          |
 | POST   | /api/users                  | {name: string} | add user               |
 | DELETE | /api/users/{id}             |                | delete user            |
@@ -15,8 +15,8 @@
 | POST   | /api/users/{id}/groups/{id} |                | attach group to user   |
 | DELETE | /api/users/{id}/groups/{id} |                | detach group from user |
 
-
 ## Project setup
+
 ```
 git clone git@github.com:OmarMakled/symfony4-back-end.git
 cd symfony4-back-end
@@ -24,10 +24,9 @@ composer install
 set .env DATABASE_URL=
 php bin/console doctrine:database:create --no-interaction
 php bin/console doctrine:migrations:migrate
-php bin/phpunit
+php vendor/bin/phpunit
 php bin/console server:run
 ```
-
 
 ## DB
 
@@ -36,4 +35,3 @@ php bin/console server:run
 ## See Also
 
 [VueJS](https://github.com/OmarMakled/symfony4-front-end)
-
