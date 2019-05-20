@@ -25,15 +25,15 @@ class UserController extends AbstractController
     /**
      * Get all users.
      *
-     * @Route(methods="GET", name="get_users")
+     * @Route(methods="GET", name="users")
      *
-     * @param \App\Service\UserService $service
+     * @param UserService $userService
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function getUsers(UserService $service)
+    public function index(UserService $userService)
     {
-        return new JsonResponse(['users' => $service->getUsers()], Response::HTTP_OK);
+        return new JsonResponse(['users' => $userService->getUsers()], Response::HTTP_OK);
     }
 
     /**
