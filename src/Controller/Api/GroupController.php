@@ -45,7 +45,7 @@ class GroupController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function addGroup(Request $request, GroupService $service)
+    public function store(Request $request, GroupService $service)
     {
         $result = $service->addGroup($request);
 
