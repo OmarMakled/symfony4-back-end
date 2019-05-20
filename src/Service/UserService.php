@@ -77,7 +77,7 @@ class UserService
      *
      * @return \App\Service\ValidatorService
      */
-    public function addUser(Request $request)
+    public function add(Request $request)
     {
         $user = new User();
         $user->setName($request->request->get('name', ''));
