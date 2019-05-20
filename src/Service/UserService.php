@@ -110,7 +110,7 @@ class UserService
      *
      * @return \App\Service\ValidatorService
      */
-    public function deleteUser(User $user)
+    public function delete(User $user)
     {
         $this->em->remove($user);
         $this->em->flush();
