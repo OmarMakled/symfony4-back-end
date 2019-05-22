@@ -30,7 +30,7 @@ class GroupController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getGroups(GroupService $service)
+    public function index(GroupService $service)
     {
         return new JsonResponse(['groups' => $service->getGroups()], Response::HTTP_OK);
     }
@@ -45,7 +45,7 @@ class GroupController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function addGroup(Request $request, GroupService $service)
+    public function store(Request $request, GroupService $service)
     {
         $result = $service->addGroup($request);
 
@@ -66,13 +66,12 @@ class GroupController extends AbstractController
      * Delete group.
      *
      * @Route("/{group}", methods="DELETE", name="delete_group")
-     *
-     * @param \App\Entity\Group         $group
-     * @param \App\Service\GroupService $service
      * 
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @param Group $group
+     * @param GroupService $service
+     * @return JsonResponse
      */
-    public function deleteGroup(Group $group, GroupService $service)
+    public function delete(Group $group, GroupService $service)
     {
         $result = $service->deleteGroup($group);
 

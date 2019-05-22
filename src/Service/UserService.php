@@ -47,11 +47,10 @@ class UserService
     private $user;
 
     /**
-     * Constructor.
-     *
-     * @param \App\Service\ValidatorService        $validator
-     * @param \Doctrine\ORM\EntityManagerInterface $em
-     * @param \App\Repository\UserRepository       $repo
+     * UserService constructor.
+     * @param ValidatorService $validator
+     * @param EntityManagerInterface $em
+     * @param UserRepository $repo
      */
     public function __construct(ValidatorService $validator, EntityManagerInterface $em, UserRepository $repo)
     {
@@ -77,7 +76,7 @@ class UserService
      *
      * @return \App\Service\ValidatorService
      */
-    public function addUser(Request $request)
+    public function add(Request $request)
     {
         $user = new User();
         $user->setName($request->request->get('name', ''));
@@ -110,7 +109,7 @@ class UserService
      *
      * @return \App\Service\ValidatorService
      */
-    public function deleteUser(User $user)
+    public function delete(User $user)
     {
         $this->em->remove($user);
         $this->em->flush();

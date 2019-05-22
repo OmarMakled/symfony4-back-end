@@ -25,15 +25,15 @@ class UserController extends AbstractController
     /**
      * Get all users.
      *
-     * @Route(methods="GET", name="get_users")
+     * @Route(methods="GET", name="users")
      *
-     * @param \App\Service\UserService $service
+     * @param UserService $userService
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function getUsers(UserService $service)
+    public function index(UserService $userService)
     {
-        return new JsonResponse(['users' => $service->getUsers()], Response::HTTP_OK);
+        return new JsonResponse(['users' => $userService->getUsers()], Response::HTTP_OK);
     }
 
     /**
@@ -41,14 +41,14 @@ class UserController extends AbstractController
      *
      * @Route(methods="POST", name="add_user")
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \App\Service\UserService                  $service
+     * @param Request $request
+     * @param UserService $service
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function addUser(Request $request, UserService $service)
+    public function store(Request $request, UserService $service)
     {
-        $result = $service->addUser($request);
+        $result = $service->add($request);
 
         if ($result->hasError()) {
             return new JsonResponse(['error' => $result->getError()],
@@ -68,14 +68,14 @@ class UserController extends AbstractController
      *
      * @Route("/{user}", methods="DELETE", name="delete_user")
      *
-     * @param \App\Entity\User         $user
-     * @param \App\Service\UserService $service
+     * @param User $user
+     * @param UserService $service
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
-    public function deleteUser(User $user, UserService $service)
+    public function delete(User $user, UserService $service)
     {
-        $result = $service->deleteUser($user);
+        $result = $service->delete($user);
 
         return new JsonResponse([
             'message' => $result->success(),
@@ -87,11 +87,10 @@ class UserController extends AbstractController
      *
      * @Route("/{user}/groups/{group}", methods="POST", name="attach_group")
      *
-     * @param \App\Entity\User         $user
-     * @param \App\Entity\Group        $group
-     * @param \App\Service\UserService $service
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @param User $user
+     * @param Group $group
+     * @param UserService $service
+     * @return JsonResponse
      */
     public function attachGroup(User $user, Group $group, UserService $service)
     {
